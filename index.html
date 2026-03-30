@@ -12,23 +12,31 @@
     <header class="hero">
         <div class="container fade-in">
             <img src="./logo.png" alt="Logo AWS Cloud Club INACAP Concepción Talcahuano" id="logo">
-            
+
             <span class="badge">Demo en Vivo</span>
             <h1>Tu primera web estática<br><span class="text-accent">hosteada en la nube.</span></h1>
-            <p>Revive el paso a paso de la demostración en vivo durante el primer evento del AWS Cloud Club INACAP. Aprendiendo Networking, Compute y Storage con práctica real.</p>
+            <p>Revive el paso a paso de la demostración en vivo durante el primer evento del AWS Cloud Club INACAP.
+                Aprendiendo Networking, Compute y Storage con práctica real.</p>
         </div>
     </header>
 
     <main class="container">
         <!-- Tabla con detalles de la infraestructura -->
         <div class="arch-table fade-in">
-            <h3>📡 Infraestructura base (us-east-1)</h3>
+            <h3>📡 Infraestructura base</h3>
             <table>
                 <thead>Para el laboratorio utilizamos las siguientes configuraciones generales:
-                    <th>Componente</th>
-                    <th>Especificación</th>
+                    <tr>
+
+                        <th>Componente</th>
+                        <th>Especificación</th>
+                    </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>Región</td>
+                        <td><span class="mono"><code>us-east-1</code></span></td>
+                    </tr>
                     <tr>
                         <td>VPC</td>
                         <td><span class="mono">10.0.0.0/16</span></td>
@@ -61,6 +69,9 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="warning-note">
+⚠️ Asegúrate de trabajar en la región <code>us-east-1</code>. Puedes cambiar tu región en la parte superior derecha en la consola.
+</div>
         </div>
 
         <!-- Alerta de responsabilidad compartida -->
@@ -77,7 +88,8 @@
             <p>AWS protege la seguridad <strong>DE</strong> la nube (hardware). Tú eres responsable de la seguridad
                 <strong>EN</strong> la nube.
                 <br>En este demo usamos un Rol IAM para que la EC2 acceda a S3 de forma segura,
-                sin credenciales fijas.</p>
+                sin credenciales fijas.
+            </p>
         </div>
 
         <!-- Paso a paso completo -->
@@ -87,28 +99,34 @@
                     <div class="step-number">1</div>
                     <h3>Descargar Repositorio</h3>
                 </div>
-                <div class="step-content" >
-                    <p style="margin-bottom: 1rem;">✔ Descarga este <a href="https://github.com/D43-Dalus/awscloudclub-demoprimerevento">repositorio de GitHub</a></p>
-                                        <div class="terminal" style="margin-bottom:1rem;">
+                <div class="step-content">
+                    <p style="margin-bottom: 1rem;">✔ Descarga este <a
+                            href="https://github.com/D43-Dalus/awscloudclub-demoprimerevento">repositorio de GitHub</a>
+                    </p>
+                    <div class="terminal" style="margin-bottom:1rem;">
                         <div class="terminal-header">
                             <div class="terminal-dots"><span class="terminal-dot red"></span><span
                                     class="terminal-dot yellow"></span><span class="terminal-dot green"></span></div>
                             <button class="copy-btn"
                                 data-copy="https://github.com/D43-Dalus/awscloudclub-demoprimerevento">Copiar</button>
                         </div>
-                        <div class="terminal-body"><code>https://github.com/D43-Dalus/awscloudclub-demoprimerevento</code></div>
+                        <div class="terminal-body">
+                            <code>https://github.com/D43-Dalus/awscloudclub-demoprimerevento</code>
+                        </div>
                     </div>
 
                     <p>✔ Haz click en <strong>Code</strong> → <strong>Download ZIP</strong></p>
-                    <p>Una vez descargado, descomprime el archivo. Tendrás una carpeta con 4 archivos: <code>index.html</code>,
-                        <code>style.css</code>, <code>logo.png</code> y <code>script.js</code></p>
+                    <p>Una vez descargado, descomprime el archivo. Tendrás una carpeta con 4 archivos:
+                        <code>index.html</code>,
+                        <code>style.css</code>, <code>logo.png</code> y <code>script.js</code>
+                    </p>
 
                 </div>
             </div>
-            <!-- Paso 1: Crear VPC -->
+            <!-- Paso 2: Crear VPC -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">1</div>
+                    <div class="step-number">2</div>
                     <h3>Crear la VPC</h3>
                 </div>
                 <div class="step-content">
@@ -144,7 +162,7 @@
                             </tr>
                             <tr>
                                 <td>Tenencia</td>
-                                <td>Predeterminado</td>
+                                <td>Default</td>
                             </tr>
                             <tr>
                                 <td>Control de cifrado de VPC</td>
@@ -156,10 +174,10 @@
                 </div>
             </div>
 
-            <!-- Paso 2: Crear subred pública -->
+            <!-- Paso 3: Crear subred pública -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">2</div>
+                    <div class="step-number">3</div>
                     <h3>Crear subred pública</h3>
                 </div>
                 <div class="step-content">
@@ -195,10 +213,10 @@
                 </div>
             </div>
 
-            <!-- Paso 3: Internet Gateway y tabla de rutas -->
+            <!-- Paso 4: Internet Gateway y tabla de rutas -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">3</div>
+                    <div class="step-number">4</div>
                     <h3>Internet Gateway y tabla de rutas</h3>
                 </div>
                 <div class="step-content">
@@ -218,7 +236,8 @@
                         </tbody>
                     </table>
                     <p>Una vez creada, en el detalle de la Internet Gateway, haz click en <strong>Acciones</strong> →
-                        <strong>Conectar a la VPC</strong> y selecciona tu VPC.</p>
+                        <strong>Conectar a la VPC</strong> y selecciona tu VPC.
+                    </p>
                     <br>
                     <hr>
                     <br>
@@ -259,10 +278,10 @@
                 </div>
             </div>
 
-            <!-- Paso 4: Lanzar EC2 -->
+            <!-- Paso 5: Lanzar EC2 -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">4</div>
+                    <div class="step-number">5</div>
                     <h3>Lanzar instancia EC2</h3>
                 </div>
                 <div class="step-content">
@@ -281,10 +300,6 @@
                             </tr>
                             <tr>
                                 <td>Imágenes de aplicaciones y sistemas operativos</td>
-                                <td>Amazon Linux</td>
-                            </tr>
-                            <tr>
-                                <td>AMI</td>
                                 <td>Amazon Linux 2023 kernel-6.1 (64 bits x86)</td>
                             </tr>
                             <tr>
@@ -348,10 +363,10 @@
                 </div>
             </div>
 
-            <!-- Paso 5: Configurar Security Group (reglas de entrada) -->
+            <!-- Paso 6: Configurar Security Group (reglas de entrada) -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">5</div>
+                    <div class="step-number">6</div>
                     <h3>Configurar grupo de seguridad</h3>
                 </div>
                 <div class="step-content">
@@ -384,16 +399,20 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p>Además, asegúrate de que ya exista la regla SSH (puerto 22) con origen 0.0.0.0/0 (si no, agrégala
+                    <br>
+                    <p>Asegúrate de que ya exista la regla SSH (puerto 22) con origen 0.0.0.0/0 (si no, agrégala
                         también).</p>
+                    <div class="warning-note">⚠️ El SSH con origen 0.0.0.0/0 es <strong>solo para la
+                            demostración</strong>. En entornos de producción, se restringe por IP o se usan servicios
+                        como SSM Session Manager.</div>
                     <p>Guarda los cambios.</p>
                 </div>
             </div>
 
-            <!-- Paso 6: Crear bucket S3 -->
+            <!-- Paso 7: Crear bucket S3 -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">6</div>
+                    <div class="step-number">7</div>
                     <h3>Crear bucket S3 y subir el sitio web</h3>
                 </div>
                 <div class="step-content">
@@ -419,14 +438,6 @@
                                 <td>ACL deshabilitadas (recomendado)</td>
                             </tr>
                             <tr>
-                                <td>Bloquear acceso público</td>
-                                <td><strong>Desmarcar</strong> "Bloquear todo el acceso público"</td>
-                            </tr>
-                            <tr>
-                                <td>Confirmación</td>
-                                <td>Marcar la casilla de advertencia</td>
-                            </tr>
-                            <tr>
                                 <td>Tipo de Cifrado</td>
                                 <td>Cifrado del servidor con claves administradas de Amazon S3 (SSE-S3)</td>
                             </tr>
@@ -434,14 +445,15 @@
                     </table>
                     <p>Haz click en "<strong>Crear bucket</strong>".</p>
                     <p>Luego, dentro del bucket, sube los archivos de tu sitio web (<code>index.html</code>,
-                        <code>logo.png</code>, <code>style.css</code>, etc.).</p>
+                        <code>logo.png</code>, <code>style.css</code>, etc.).
+                    </p>
                 </div>
             </div>
 
-            <!-- Paso 7: Crear rol IAM para EC2 -->
+            <!-- Paso 8: Crear rol IAM para EC2 -->
             <div class="step-card">
                 <div class="step-header">
-                    <div class="step-number">7</div>
+                    <div class="step-number">8</div>
                     <h3>Crear rol IAM para EC2</h3>
                 </div>
                 <div class="step-content">
@@ -470,57 +482,13 @@
   }]
 }</code></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Paso 8: Asignar el rol a la instancia y actualizar política del bucket -->
-            <div class="step-card">
-                <div class="step-header">
-                    <div class="step-number">8</div>
-                    <h3>Asignar rol a EC2 y política al bucket</h3>
-                </div>
-                <div class="step-content">
+                    <br>
+                    <hr>
+                    <br>                    
                     <p>✔ <strong>Asignar rol a la instancia:</strong></p>
-                    <p> Ve a <strong>EC2</strong> → <strong>Instancias</strong>, marca tu instancia, luego
-                        <strong>Acciones</strong> → <strong>Seguridad</strong> → <strong>Modificar rol de IAM</strong>.
-                        Selecciona <code>Rol-EC2-S3-Lectura</code> y guarda.</p>
-                    <p>✔ <strong>Actualizar política del bucket:</strong></p>
-                    <p> Ve a <strong>S3</strong> → tu bucket → <strong>Permisos</strong> → <strong>Política de
-                            bucket</strong> → <strong>Editar</strong>.</p>
-                    <p>Copia y pega el siguiente JSON, reemplazando los valores <code>TU_ID_DE_CUENTA</code> y
-                        <code>TU_BUCKET</code>:</p>
-                    <div class="terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-dots"><span class="terminal-dot red"></span><span
-                                    class="terminal-dot yellow"></span><span class="terminal-dot green"></span></div>
-                            <button class="copy-btn"
-                                data-copy='{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"AWS":"arn:aws:iam::TU_ID_DE_CUENTA:role/Rol-EC2-S3-Lectura"},"Action":["s3:GetObject","s3:ListBucket"],"Resource":["arn:aws:s3:::TU_BUCKET","arn:aws:s3:::TU_BUCKET/*"]}]}'>Copiar</button>
-                        </div>
-                        <div class="terminal-body"><code>{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::TU_ID_DE_CUENTA:role/Rol-EC2-S3-Lectura"
-      },
-      "Action": [
-        "s3:GetObject",
-        "s3:ListBucket"
-      ],
-      "Resource": [
-        "arn:aws:s3:::TU_BUCKET",
-        "arn:aws:s3:::TU_BUCKET/*"
-      ]
-    }
-  ]
-}</code></div>
-                    </div>
-                    <div class="info-note">💡 El ID de cuenta lo encuentras en la esquina superior derecha de la consola
-                        (número de 12 dígitos).
-                        <br>No olvides cambiar <code>TU_BUCKET</code> por tu nombre de bucket y añadir <code>/*</code>
-                        en el recurso.
-                    </div>
+                    <p> Ve a <strong>EC2</strong> → <strong>Instancias</strong> y marca el cuadro de tu instancia.</p>
+                        <p>Luego, haz click en <strong>Acciones</strong> → <strong>Seguridad</strong> → <strong>Modificar rol de IAM</strong>.</p><p>Selecciona <code>Rol-EC2-S3-Lectura</code> y guarda.</p>
+
                 </div>
             </div>
 
@@ -536,7 +504,8 @@
                     <ol>
                         <li>Abre CloudShell desde la barra inferior de la consola.</li>
                         <li>Sube tu archivo de clave privada (<code>.pem</code>): <strong>Acciones</strong> →
-                            <strong>Cargar archivo</strong> y selecciona el par de claves.</li>
+                            <strong>Cargar archivo</strong> y selecciona el par de claves.
+                        </li>
                         <li>Cambia los permisos del archivo: <code>chmod 400 TU_KEYPAIR.pem</code></li>
                         <li>Conéctate usando la IP pública de tu instancia (la ves en los detalles de EC2):<br>
                         </li>
@@ -550,7 +519,18 @@
                         </div>
                         <div class="terminal-body"><code>ssh -i TU_KEYPAIR.pem ec2-user@IP_PUBLICA</code></div>
                     </div>
-                    <p><br>Una vez dentro, ejecuta estos comandos para instalar Apache y descargar el sitio desde S3:
+                                        <div class="warning-note">⚠️ La IP pública cambia si detienes/inicias la instancia. Usa Elastic IP si necesitas persistencia.</div>
+
+                    <p>Verificamos que tenemos configurados nuestro rol de IAM correctamente:</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots"><span class="terminal-dot red"></span><span
+                                    class="terminal-dot yellow"></span><span class="terminal-dot green"></span></div>
+                            <button class="copy-btn" data-copy="aws sts get-caller-identity">Copiar</button>
+                        </div>
+                        <div class="terminal-body"><code>aws sts get-caller-identity</code></div>
+                    </div>
+                    <p><br>Una vez dentro, ejecuta estos comandos para instalar Apache y descargar los archivos contenidos en S3:
                     </p>
 
                     <div class="terminal">
@@ -558,9 +538,9 @@
                             <div class="terminal-dots"><span class="terminal-dot red"></span><span
                                     class="terminal-dot yellow"></span><span class="terminal-dot green"></span></div>
                             <button class="copy-btn"
-                                data-copy="sudo yum update -y && sudo yum install -y httpd">Copiar</button>
+                                data-copy="sudo dnf update -y && sudo dnf install -y httpd">Copiar</button>
                         </div>
-                        <div class="terminal-body"><code>sudo yum update -y && sudo yum install -y httpd</code></div>
+                        <div class="terminal-body"><code>sudo dnf update -y && sudo dnf install -y httpd</code></div>
                     </div>
                     <p style="padding-left: 1rem;"><i>Actualizamos la instancia e instalamos el servicio para levantar
                             el servidor web (Apache)</i></p>
@@ -572,7 +552,8 @@
                                 data-copy="sudo systemctl start httpd && sudo systemctl enable httpd">Copiar</button>
                         </div>
                         <div class="terminal-body">
-                            <code>sudo systemctl start httpd && sudo systemctl enable httpd</code></div>
+                            <code>sudo systemctl start httpd && sudo systemctl enable httpd</code>
+                        </div>
                     </div>
                     <p style="padding-left: 1rem;"><i>Iniciamos el servidor web ahora (<code>start</code>) y lo
                             configuramos para que se inicie automáticamente en el arranque (<code>enable</code>)</i></p>
@@ -582,11 +563,12 @@
                             <div class="terminal-dots"><span class="terminal-dot red"></span><span
                                     class="terminal-dot yellow"></span><span class="terminal-dot green"></span></div>
                             <button class="copy-btn"
-                                data-copy="aws s3 sync s3://TU_BUCKET/ /var/www/html/">Copiar</button>
+                                data-copy="sudo aws s3 sync s3://TU_BUCKET/ /var/www/html/">Copiar</button>
                         </div>
-                        <div class="terminal-body"><code>aws s3 sync s3://TU_BUCKET/ /var/www/html/</code></div>
+                        <div class="terminal-body"><code>sudo aws s3 sync s3://TU_BUCKET/ /var/www/html/</code></div>
                     </div>
-                    <p style="padding-left: 1rem; padding-bottom: 1rem;"><i>Descargamos la última versión del contenido del bucket y lo hospedamos en el servidor web Apache</i>
+                    <p style="padding-left: 1rem; padding-bottom: 1rem;"><i>Descargamos la última versión del contenido
+                            del bucket y lo hospedamos en el servidor web Apache</i>
                     <div class="warning-note">⚠️ Recuerda cambiar <code>TU_BUCKET</code> por el nombre real de tu
                         bucket.</div>
                     <p style="padding-top:1rem;">Una vez terminado, sal de la sesión SSH con <code>exit</code>.</p>
@@ -599,13 +581,16 @@
                     <div class="step-number">10</div>
                     <h3>¡Probar y compartir!</h3>
                 </div>
-                <div class="step-content" >
-                    <p style="margin-bottom: 1rem;">✔ Abre tu navegador y visita <code>http://IP_PUBLICA</code>. ¡Verás tu página web servida desde
+                <div class="step-content">
+                    <p style="margin-bottom: 1rem;">✔ Abre tu navegador y visita <code>http://IP_PUBLICA</code>. ¡Verás
+                        tu página web servida desde
                         la EC2, con el contenido descargado desde S3!</p>
-                    <div class="warning-note" style="margin-bottom: 1.3rem;">🔴 <strong>Importante:</strong> Si estás en la red de INACAP, es posible
+                    <div class="warning-note" style="margin-bottom: 1.3rem;">🔴 <strong>Importante:</strong> Si estás en
+                        la red de INACAP, es posible
                         que no veas la página porque la red institucional solo acepta HTTPS (y nuestra página es HTTP).
                         Usa tus datos móviles o una red externa para probar.</div>
-                    <div class="info-note" style="margin-bottom: 1rem;">✅ Te conectaste manualmente, ejecutaste los comandos uno por uno y lograste
+                    <div class="info-note" style="margin-bottom: 1rem;">✅ Te conectaste manualmente, ejecutaste los
+                        comandos uno por uno y lograste
                         que la EC2 sirva el sitio web almacenado en S3.</div>
                 </div>
             </div>
@@ -613,7 +598,8 @@
 
         <div class="fade-in"
             style="text-align: center; margin: 30px 0 40px; padding: 15px; border-radius: 24px; background: rgba(124, 58, 237, 0.05);">
-            <p>✨ Este es el <strong>primer de muchos proyectos increíbles</strong> que haremos juntos en el AWS Cloud Club. ✨</p>
+            <p>✨ Este es el <strong>primer de muchos proyectos increíbles</strong> que haremos juntos en el AWS Cloud
+                Club. ✨</p>
         </div>
     </main>
 
