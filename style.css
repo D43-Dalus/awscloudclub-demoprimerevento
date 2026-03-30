@@ -106,6 +106,12 @@
             font-weight: 600;
         }
 
+        a, a:visited, a:focus, a:hover, a:active {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
         .mono {
             font-family: monospace;
             background: #111;
